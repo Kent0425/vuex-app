@@ -22,26 +22,31 @@
 
             <b-form-group
               id="input-group-2"
-              label="Your Name:"
+              label="Password:"
               label-for="input-2"
             >
               <b-form-input
+                style="-webkit-text-security: square;"
                 id="input-2"
-                v-model="form.name"
+                v-model="form.password"
                 required
-                placeholder="Enter name"
+                placeholder="Enter password"
               ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-4">
-              <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
-                <b-form-checkbox value="me">Check me out</b-form-checkbox>
-                <b-form-checkbox value="that">Check that out</b-form-checkbox>
-              </b-form-checkbox-group>
-            </b-form-group>
-
-            <b-button type="submit" variant="primary">Submit</b-button>
-            <b-button type="reset" variant="danger">Reset</b-button>
+            <b-button class="mr-1" type="submit" variant="primary"
+              >Submit</b-button
+            >
+            <b-button class="ml-1" type="reset" variant="danger"
+              >Reset</b-button
+            >
+            <b-button
+              class="ml-2"
+              @click="$router.push('login')"
+              type="reset"
+              variant="danger"
+              >Back</b-button
+            >
           </b-form>
         </div>
       </div>
@@ -56,8 +61,7 @@ export default {
     return {
       form: {
         email: "",
-        name: "",
-        checked: [],
+        password: "",
       },
       show: true,
     };
@@ -72,7 +76,6 @@ export default {
       // Reset our form values
       this.form.email = "";
       this.form.name = "";
-      this.form.checked = [];
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {
